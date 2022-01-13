@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:  
+  postgres:
+    container_name: postgres
+    image: postgres:14.1
+    environment:
+      PGDATA: /data/postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./data/postgres:/data/postgres
+      - ./starting/tablesCreating.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./starting/tablesFilling.sql:/docker-entrypoint-initdb.d/2.sql
+    ports:
+      - "5432:5432"
+
+
+
+
+
+
+
